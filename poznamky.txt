@@ -1,0 +1,16 @@
+ideas
+
+	nastavit heroDefMax a udelat, ze se bude opravovat v obchode
+
+invetory
+
+	array, kde budou nazvy a arraye se staty (viz. enemak generator)
+
+fight
+	definovat heroAgilityMax a pri minuti nohou snizit heroAgility o -1
+
+
+rozhled
+
+	poresit to tak, ze if(Arrays.equals(rozhled, mesto){}
+					   else if(Arrays.equals(rozhled, dung){}
