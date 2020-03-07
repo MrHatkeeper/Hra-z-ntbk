@@ -19,13 +19,9 @@ public class Hra{
         int[] heroPos = {0, 0};
 
         //město
-        int[] mesto = {5, 0};
-        int[] dung = {0, 5};
+        int[][] mesto = {{5, 0}};
+        int[][] dung = {{0, 5}, {}};
 
-        //lokace
-        int[][] lokace = {mesto, dung};
-        int[][] mestoLokace = {mesto};
-        int[][] dungLokace = {dung};
 
         while(gameOver == false){
 
@@ -42,11 +38,6 @@ public class Hra{
                 System.out.print("Zabil si se....gratuluji");
                 gameOver = true;
             }
-
-            //tvoje pozice
-            else if(move.equals("pozice")){
-                System.out.println("Tvá X pozice je " + heroPos[0] + " a Y pozice je " + heroPos[1]);
-            }
             
             //pohyb
             if(move.equals("dopredu")){
@@ -62,7 +53,7 @@ public class Hra{
                 heroPos[1] = heroPos[0] - 1;
             }
         
-            //zjišťování, co kde je ve vzdálenosti 5 
+            //prostě se podíváš kolem LOL 
             if(move.equals("rozhlednout")){
                 
                 //rozhled         X   Y
@@ -72,17 +63,17 @@ public class Hra{
                 for(int i = -5; i < 6; i++){
                     rozhled[1] = -6;
                     rozhled[0] = rozhled[0] + 1;
-                    for(int o = 0; o < 6; o++){
+                    for(int o = 0; o < 11; o++){
                         rozhled[1] = rozhled[1] + 1;
-                        for(int y = 0; y < mestoLokace.length; y++){
-                            if(Arrays.equals(rozhled, mestoLokace[y])){
+                        for(int y = 0; y < mesto.length; y++){
+                            if(Arrays.equals(rozhled, mesto[y])){
                                 System.out.println("Vydíš město, které je od tebe vzdálené " + (rozhled[0] - heroPos[0]) + " Po ose X a " +  (rozhled[1] - heroPos[1]) + " Po ose Y" );
 
 
                             }
                         }
-                        for(int y = 0; y < dungLokace.length; y++){
-                            if(Arrays.equals(rozhled, dungLokace[y])){
+                        for(int y = 0; y < dung.length; y++){
+                            if(Arrays.equals(rozhled, dung[y])){
                                 System.out.println("Vydíš dungeon, který je od tebe vzdálený " + (rozhled[0] - heroPos[0]) + " Po ose X a " +  (rozhled[1] - heroPos[1]) + " Po ose Y" );
 
 
