@@ -18,7 +18,7 @@ public class Hra{
             int heroMaxHealth = 20;
             int heroDamage = 100;
             int heroDef = 3;
-            int heroAgility = 3;
+            int heroAgility = 3;    
 
             int gold = 0;
 

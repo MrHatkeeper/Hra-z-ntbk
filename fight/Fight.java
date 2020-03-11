@@ -30,6 +30,8 @@ public class Fight{
             int heroDef = 3;
             int heroAgility = 3;
 
+            int gold = 0;
+
             //enemy gen
             int enemyGen = rand.nextInt(3);
             int[] enemy = {dmg[enemyGen], def[enemyGen], hp[enemyGen], agi[enemyGen]}; 
@@ -54,6 +56,13 @@ public class Fight{
 
             //boj
             else if(fight.equals("boj") || flee == false){
+
+                //gold income
+                if(enemyAlive == false){
+                    int ingold = rand.nextInt(9) + 1;
+                    gold += ingold;
+                    System.out.println("Získal jsi " + ingold + " Máš " + gold);
+                }
                 while(alive == true && enemyAlive == true){
                     System.out.println("Na jakou část těla utočíš ? - hlava, telo, nohy");
                     String kombatPos = idk.nextLine();
