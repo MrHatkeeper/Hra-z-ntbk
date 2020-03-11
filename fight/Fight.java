@@ -16,10 +16,10 @@ public class Fight{
         
             //enemák generátor
             String[] race = {"kostlivci", "pavoukovi", "trollovi", "goblinovi"}; 
-            int[] dmg = {2, 3, 4, 102};
+            int[] dmg = {2, 3, 4, 6};
             int[] def = {0, 1, 2, 4};
             int[] hp = {15, 10, 51, 20};
-            int[] agi = {2, 7, 1, 3};
+            int[] agi = {2, 7, 1, 5};
 
             //je boj ??
             boolean flee = true;
@@ -30,7 +30,7 @@ public class Fight{
             //hero Stats
             int heroAktHealth = 20;
             int heroMaxHealth = 20;
-            int heroDamage = 5;
+            int heroDamage = 100;
             int heroDef = 3;
             int heroAgility = 3;
 
@@ -58,7 +58,7 @@ public class Fight{
 
             //boj
             else if(fight.equals("boj") || flee == false){
-                while(alive == true && heroT == true){
+                while(alive == true && enemyAlive == true){
                     System.out.println("Na jakou část těla utočíš ? - hlava, telo, nohy");
                     String kombatPos = idk.nextLine();
 
@@ -107,16 +107,13 @@ public class Fight{
                     }
 
                     // enemáka smrt
-                    else if(enemy[2] <= 0){
+                    if(enemy[2] <= 0){
                         enemyAlive = false;
+                        System.out.println("Zabíšjíš oponenta");
+                        break;
                     }
-                    heroT = false;
-                    enemyT = true;
-                }
 
-                //enemák útočí
-                while(enemyAlive == true && enemyT == true){
-                    
+                    //enemák útočí    
                     //generátor útoku
                     int enemyAtack = 3;
 
@@ -131,7 +128,7 @@ public class Fight{
                             System.out.println("Máš " + heroAktHealth + " hp a byla ti snížena def na " + heroDef);
                         }
                         else{
-                            System.out.println("Oponent minul jsi");
+                            System.out.println("Oponent minul");
                         }
 
                     }
@@ -168,13 +165,11 @@ public class Fight{
 
                     }
 
-                    enemyT = false;
-                    heroT = true;
-
                     //zabití hráče
                     if(heroAktHealth <= 0){
-                        heroT = false;
                         alive = false;
+                        System.out.println("Byl jsi zabit");
+                        break;
                     }  
                 }    
             }
