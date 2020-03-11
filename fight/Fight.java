@@ -9,10 +9,6 @@ public class Fight{
         try(Scanner idk = new Scanner(System.in)){
 
             boolean alive = true;
-
-            //kdo je na tahu ??
-            boolean heroT = true;
-            boolean enemyT = true;
         
             //enemák generátor
             String[] race = {"kostlivci", "pavoukovi", "trollovi", "goblinovi"}; 
