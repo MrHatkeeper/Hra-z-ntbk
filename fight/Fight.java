@@ -176,7 +176,13 @@ public class Fight{
                         System.out.println("Byl jsi zabit");
                         break;
                     }  
-                }    
+                }
+                //gold income
+                if(enemyAlive == false){
+                    int ingold = rand.nextInt(9) + 1;
+                    gold += ingold;
+                    System.out.println("Získal jsi " + ingold + " Máš " + gold);
+                }                    
             }
         }
     }
