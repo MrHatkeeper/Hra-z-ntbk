@@ -1,9 +1,13 @@
 import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Random;
+import fight.Fight;
 
 public class Hra{
     public static void main(String []args){
         Scanner idk = new Scanner(System.in);
+
+        Fight fight = new Fight(); 
 
         boolean gameOver = false;
 
@@ -21,6 +25,8 @@ public class Hra{
         //město
         int[][] mesto = {{5, 0}};
         int[][] dung = {{0, 5}, {}};
+
+        //fight.fajtMetoda();
 
 
         while(gameOver == false){
