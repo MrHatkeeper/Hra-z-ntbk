@@ -26,7 +26,7 @@ public class Fight{
             //hero Stats
             int heroAktHealth = 20;
             int heroMaxHealth = 20;
-            int heroDamage = 100;
+            int heroDamage = 5;
             int heroDef = 3;
             int heroAgility = 3;
 
@@ -181,7 +181,7 @@ public class Fight{
                 if(enemyAlive == false){
                     int ingold = rand.nextInt(9) + 1;
                     gold += ingold;
-                    System.out.println("Získal jsi " + ingold + " Máš " + gold);
+                    System.out.println("Získal jsi " + ingold + " Máš " + gold + " goldů ");
                 }                    
             }
         }

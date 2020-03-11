@@ -65,7 +65,7 @@ public class Hra{
                     //možnost boje + boj
                     int boj = 0;
                     boj = huhu.nextInt(10);
-                    if(boj > 10){
+                    if(boj < 10){
                         fight.fajtMetoda();
                     }
                 
