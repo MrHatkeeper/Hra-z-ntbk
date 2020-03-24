@@ -38,7 +38,8 @@ public class Hra {
                 if (heroAktHealth <= 0) {
                     gameOver = true;
                 }
-                System.out.println("Jsi na louce.Tvá pozice je X " + heroPos[0] + " a pozice Y je " + heroPos[1] + " Dostupné příkazy - pozice, rozhlednout, doleva, doprava, dopredu, dozadu");
+
+                System.out.println("Jsi na louce.Tvá pozice je X " + heroPos[0] + " a pozice Y je " + heroPos[1] + " Dostupné příkazy - rozhlednout, doleva, doprava, dopredu, dozadu");
                 Scanner zalud = new Scanner(System.in);
                 String move = zalud.nextLine();
 
