@@ -6,20 +6,16 @@ import java.util.Scanner;
 
 public class Hra {
     public static void main(String[] args) {
-        Scanner idk = new Scanner(System.in);
         Random huhu = new Random();
+        Fight fight = new Fight();
 
         boolean gameOver = false;
 
 
         //hrdina staty
         int heroAktHealth = 20;
-        int heroMaxHealth = 20;
-        int heroDamage = 100;
-        int heroDef = 3;
-        int heroAgility = 3;
 
-        int gold = 0;
+        int gold = fight.getGold();
 
 
         //hrdina pozice  X  Y
@@ -40,6 +36,8 @@ public class Hra {
                 }
 
                 System.out.println("Jsi na louce.Tvá pozice je X " + heroPos[0] + " a pozice Y je " + heroPos[1] + " Dostupné příkazy - rozhlednout, doleva, doprava, dopredu, dozadu");
+                System.out.println("heroGetGold: " + gold);
+                
                 Scanner zalud = new Scanner(System.in);
                 String move = zalud.nextLine();
 
@@ -54,8 +52,8 @@ public class Hra {
                     int boj = 0;
                     boj = huhu.nextInt(10);
                     if (boj < 6) {
-                        Fight fight = new Fight();
-                        fight.fajtMetoda();
+                        Fight idk = new Fight();
+                        idk.fajtMetoda();
                     }
                 }
 

@@ -2,11 +2,16 @@ package fight;
 
 import java.util.Random;
 import java.util.Scanner;
+import staty.Stats;
 
 public class Fight {
-    public static void fajtMetoda() {
+    Stats staty = new Stats();
+    int gold = staty.getHeroGold();
+
+    public void fajtMetoda() {
         Random rand = new Random();
         Scanner input = new Scanner(System.in);
+        Stats staty = new Stats();
 
         boolean alive = true;
 
@@ -24,13 +29,12 @@ public class Fight {
         boolean enemyAlive = true;
 
         //hero Stats
-        int heroAktHealth = 20;
-        int heroMaxHealth = 20;
-        int heroDamage = 5;
-        int heroDef = 3;
-        int heroAgility = 3;
+        int heroAktHealth = staty.getHeroAktHealth();
+        int heroMaxHealth = staty.getheroMaxHealth();
+        int heroDamage = staty.getheroDamage();
+        int heroDef = staty.getHeroDef();
+        int heroAgility = staty.getHeroAgility();
 
-        int gold = 0;
 
         //enemy gen
         int enemyGen = rand.nextInt(3);
@@ -56,12 +60,7 @@ public class Fight {
         //boj
         if (fight.equals("boj") || flee == false) {
 
-            //gold income
-            if (enemyAlive == false) {
-                int ingold = rand.nextInt(9) + 1;
-                gold += ingold;
-                System.out.println("Získal jsi " + ingold + " Máš " + gold);
-            }
+
             while (alive == true && enemyAlive == true) {
                 System.out.println("Na jakou část těla utočíš ? - hlava, telo, nohy");
                 String kombatPos = input.nextLine();
@@ -120,8 +119,16 @@ public class Fight {
                 if (enemy[2] <= 0) {
                     enemyAlive = false;
                     System.out.println("Zabíšjíš oponenta");
+
+                    // gold income
+                    gold = staty.getHeroGold();
+                    int ingold = rand.nextInt(9) + 1;
+                    gold = gold + ingold;
+                    System.out.println("Získal jsi " + ingold + " Máš " + gold);
+                
                     break;
                 }
+                
 
                 //enemák útočí
                 //generátor útoku
@@ -177,12 +184,9 @@ public class Fight {
                     break;
                 }
             }
-            //gold income
-            if (enemyAlive == false) {
-                int ingold = rand.nextInt(9) + 1;
-                gold += ingold;
-                System.out.println("Získal jsi " + ingold + " Máš " + gold + " goldů ");
-            }
         }
+    }
+    public int getGold(){
+        return gold;
     }
 }
