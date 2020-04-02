@@ -32,6 +32,8 @@ public class Hra {
         if (!gameOver) {
             while (!gameOver) {
 
+                
+
 
                 //umřít
                 if (heroAktHealth <= 0) {
@@ -260,6 +262,7 @@ public class Hra {
                         }
                     }
                 }
+
             }
         }
     }
