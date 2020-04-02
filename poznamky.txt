@@ -14,3 +14,5 @@ rozhled
 
 	poresit to tak, ze if(Arrays.equals(rozhled, mesto){}
 					   else if(Arrays.equals(rozhled, dung){}
+
+zlato = z fightu inportuj do neceho a pak z neceho do obchodu
