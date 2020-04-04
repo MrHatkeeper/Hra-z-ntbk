@@ -12,18 +12,18 @@ public class Hra {
         int retard = 1;
 
         //hrdina staty
-        int heroAktHealth = 20;
-        int heroMaxHealth = 20;
-        int heroDamage = 5000;
-        int heroDef = 5000;
-        int heroAgility = 5000;
-        int gold = 1000;
+        int heroAktHealth = 1;
+        int heroMaxHealth = 1;
+        int heroDamage = 1;
+        int heroDef = 1;
+        int heroAgility = 1;
+        int gold = 0;
 
         //enemáci staty
         int[] dmg = {2, 3, 4, 6};
         int[] def = {0, 1, 2, 4};
         int[] hp = {15, 10, 51, 20};
-        int[] agi = {2, 7, 1, 5};
+        int[] agi = {6, 7, 4, 5};
 
 
         //hrdina pozice  X  Y
@@ -36,148 +36,13 @@ public class Hra {
 
         if (!gameOver) {
             while (!gameOver) {
-                
-                //umřít
-                if (heroAktHealth <= 0) {
-                    gameOver = true;
-                }                
 
-                if(heroPos[0] == mesto[0][0] && heroPos[1] == mesto[0][1]){
-                    System.out.println("Vcházíš do města Mighty City. Vidíš po ulicíh procházet se stovky lidí. Zahlédneš i skupinu Barel gardy, která se pokouší zabránit kriminalitě, ale jak se o ulici vedle přesvědčíš, tak se jim to moc nedaří, jelikož v jedné temné uličce si koutkem oka zaregistroval zloděje, ovšem není to tvůj business, takže akorát pokrčíš rameny a jdeš dále. Dostupné pŕíkazy - medik, obchod, leave");
-                    String cityCom = input.nextLine();
-                    System.out.println("");
-
-                    if(cityCom.equals("leave")){
-                        heroPos[0] += 1;
-                    }
-
-
-                    //obchodník (nákup useless barelů)
-                    else if(cityCom.equals("obchod")){
-                        System.out.println("Vcházíš do zapadlého obchodu v rohu centra. Za pultem uvidíš staříka s dřevěnou rukou a páskou přes oko. Připadal ti trohu jako pirát... akorát naopak. Dostupné příkazy - buy, leave");
-                        String obchod = input.nextLine();
-                        System.out.println("");
-                        
-                        if(obchod.equals("buy")){
-                            System.out.println("Přistoupíš ke staříkovi a zeptáš se, co má na skladě. On ti začne ukazovat různé barely za stejnou cenu. Cena je 30 goldů jeden. Dostupné pŕíkazy - agilita, maxŽivoty, poškození, obrana");
-                            System.out.println("");
-                            String barelChoose = input.nextLine();
-
-                            if(gold >= 30){
-                                //boost agility
-                                if(barelChoose.equals("agilita")){
-                                    heroAgility++;
-                                    gold -= 30;
-                                    System.out.println("Vybral jsi si barel agility. Zaplatíš a vstřebáš ho. Dostáváš 1 agilitu. Máš " + heroAgility + " agility");
-                                    System.out.println("Máš " + gold + " goldů");
-                                }
-
-                                //boost životů
-                                else if(barelChoose.equals("maxŽivoty")){
-                                    heroMaxHealth++;
-                                    gold -= 30;
-                                    System.out.println("Vybral jsi si barel boostu životů. Zaplatíš a vstřebáš ho. Dostáváš 1 maximální život. Máš " + heroMaxHealth + " maximálné životů");
-                                    System.out.println("Máš " + gold  + " goldů");
-                                } 
-                                
-                                //boost damage
-                                else if(barelChoose.equals("poškození")){
-                                    heroDamage++;
-                                    gold -= 30;
-                                    System.out.println("Vybral jsi si barel poškození. Zaplatíš a vstřebáš ho. Dostáváš 1 poškození. Máš " + heroDamage + " poškození");
-                                    System.out.println("Máš " + gold  + " goldů");
-                                }
-                                
-                                //boost defu
-                                else if(barelChoose.equals("obrana")){
-                                    heroMaxHealth++;
-                                    gold -= 30;
-                                    System.out.println("Vybral jsi si barel obrany. Zaplatíš a vstřebáš ho. Dostáváš 1 obranu. Máš " + heroDamage + " obrany");
-                                    System.out.println("Máš " + gold  + " goldů");
-                                }
-
-                            }   
-                            
-                            else{
-                                retard += rand.nextInt(3) + 1;
-                            System.out.println("Jelikož si ze sebe nebyl schopen vykoktat jediné slovo, jak si byl zaskočen jeho vzhledem, i když si viděl odost horší stvoŕení než on. Obchodník se rozřuzil, že je to tento týden už po " + retard + ". kdo nebyl schopen si u něj něco koupit a vyhnal tě na ulici");
-                            }
-
-                            System.out.println("Poděkuješ za jeho čas a odcházíš zpátky do ulice");
-                            System.out.println("");
-                        }
-
-                        //normální odchod
-                        else if(obchod.equals("leave")){
-                            System.out.println("Zapoměl jsi, co si chtěl a odcházíš zpátky do ulice");
-                            System.out.println("");
-                        }
-
-                        //retard
-                        else{
-                            retard += rand.nextInt(3) + 1;
-                            System.out.println("Jelikož si ze sebe nebyl schopen vykoktat jediné slovo, jak si byl zaskočen jeho vzhledem, i když si viděl odost horší stvoŕení než on. Obchodník se rozřuzil, že je to tento týden už po " + retard + ". kdo nebyl schopen si u něj něco koupit a vyhnal tě na ulici");
-                        }
-
-                    }
-
-                    //healer
-                    else if(cityCom.equals("medik")){
-                        System.out.println("Vcházíš k doktorovi. Hned co otevřeš dveře tvou pozornost upoutá lekářka, žena přesně podle tvých představ. Ta svým nádherným hlasem pronese: Léčení stojí 10 goldů. Dostupné příkazy - heal, leave");
-                        String healer = input.nextLine();
-
-                        // healing
-                        if(healer.equals("heal")){
-
-                            if(gold <= 10){
-                                System.out.println("Nemáš dostatek goldů");
-                            }
-
-                            else{
-                                for(int hapka = heroAktHealth; hapka < heroMaxHealth; hapka++){
-                                    heroAktHealth++;
-                                }
-                                gold -= 10;
-                                System.out.println("Jsi zcela uzdraven. Máš " + heroAktHealth + " životů");
-                                System.out.println("Máš " + gold + " goldů");
-                            }
-                            System.out.println("");
-                        }
-
-                        //normální odchod
-                        else if(healer.equals("leave")){
-                            System.out.println("Prostě se otočíš a odejdeš");
-                            System.out.println("");
-                        }
-
-                        //retard
-                        else{
-                            System.out.println("Lékařka se urazila a řekla. Poslyš hochu, jestli nechceš vyléčit a chceš se jenom dívat, tak se stav po desáté v hospodě. Těď můžeš vypadnout");
-                            System.out.println("");
-                        }
-
-                    }
-                }
-
-                else{
-                    System.out.println("Tvá pozice je X " + heroPos[0] + " a pozice Y je " + heroPos[1] + " Dostupné příkazy - mapa, doleva, doprava, dopredu, dozadu");
-                    
-                    Scanner zalud = new Scanner(System.in);
-                    String move = zalud.nextLine();
-
-                    //sebevražda
-                    if (move.equals("kill")) {
-                        System.out.print("Zabil si se....gratuluji");
-                        gameOver = true;
-                    }
-
-                    //možnost boje + boj
-                    if (move.equals("dopredu") || move.equals("doprava") || move.equals("dozadu") || move.equals("doleva")) {
-                        int boj = 0;
-                        boj = rand.nextInt(10);
-                        if (boj < 5) {
-
-                            boolean alive = true;
+                for(int x = 0; x < dung.length; x++){
+                    if(heroPos[0] == dung[x][0] && heroPos[1] == dung[x][1]){
+                        int level = rand.nextInt(3) + 5;
+                        int aktLevel = 0;
+                        System.out.println("Procházíš zkrze zarostlou kamenou bránu do sklepení");
+                        for(int y = aktLevel; y < level; y++){
 
                             //enemák generátor
                             String[] race = {"kostlivci", "pavoukovi", "trollovi", "goblinovi"};
@@ -195,26 +60,9 @@ public class Hra {
                     
                             System.out.println("Bojuješ proti " + race[enemyGen]);
                             System.out.println("Jeho staty jsou dmg - " + enemy[0] + " def - " + enemy[1] + " hp - " + enemy[2] + " agi - " + enemy[3]);
-                            System.out.println("Co chceš dělat ? Dostupné příkazy - boj, utek");
-                            String fajt = input.nextLine();
                     
                     
-                            //útěk
-                            if (fajt.equals("utek")) {
-                                int esc = rand.nextInt(9) + 1;
-                                if (esc <= 7) {
-                                    System.out.println("Zakopl si a nepodařilo se ti utéct ");
-                                    flee = false;
-                                } else if (esc > 7) {
-                                    System.out.println("Možná si tímto útěkem nezachováš čest, ale alespoň život ano");
-                                }
-                            }
-                    
-                            //boj
-                            if (fajt.equals("boj") || flee == false) {
-                    
-                    
-                                while (alive == true && enemyAlive == true) {
+                                while (gameOver == false && enemyAlive == true) {
                                     System.out.println("Na jakou část těla utočíš ? - hlava, telo, nohy");
                                     String kombatPos = input.nextLine();
                     
@@ -348,7 +196,355 @@ public class Hra {
                     
                                     //zabití hráče
                                     if (heroAktHealth <= 0) {
-                                        alive = false;
+                                        gameOver = true;
+                                        System.out.println("Byl jsi zabit");
+                                        break;
+                                    }
+                                }
+                                System.out.println("");
+                                System.out.println("Vstupuješ do dalšího patra.");
+                        }
+                        System.out.println("");
+                        System.out.println("Vcházíš po schodech do posledního patra, kde zářivý barel. Následně ho ihned po dodupnutí na podloahu vstřebáš a začínáš vidět svou minulost");
+                        System.out.println("TODO## lore");
+                        System.out.println("");
+                        int specBoost = rand.nextInt(3) + 1;
+                        if(specBoost == 1){
+                            heroAgility += 3;
+                            System.out.println("Cítíš, jak se rychlejí pohybuješ. Dostáváš 3 do agility. Máš " + heroAgility + " agilitu");
+                        }
+                        else if(specBoost == 2){
+                            heroDamage += 3;
+                            System.out.println("Upadneš na podlahu a uděláš do ni díru. Dostáváš 3 body do poškození. Máš " + heroDamage + " poškození");
+                        }
+                        else if(specBoost == 3){
+                            heroDef += 3;
+                            System.out.print("Šáhneš si na kůži a ucítíš, jako by so šahal na kamínky.Dostáváš 3 body do ocharny. Máš " + heroDef + " ochranu");
+                        }
+                        else if(specBoost == 4 ){
+                            heroMaxHealth += 3;
+                            for(int w = heroAktHealth; x < heroMaxHealth; x++){
+                                
+                            }
+                            System.out.println("Ucítíš, jak ti teplá krev a vidíš, jak mění barvu. Dostáváš 3 body do maximálních životů a byl jsi vyléčen. Máš " + heroMaxHealth + "bodů maximalních životů");
+                        }
+
+                    }
+                }
+                
+                //umřít
+                if (heroAktHealth <= 0) {
+                    gameOver = true;
+                }                
+
+                if(heroPos[0] == mesto[0][0] && heroPos[1] == mesto[0][1]){
+                    System.out.println("Vcházíš do města Mighty City. Vidíš po ulicíh procházet se stovky lidí. Zahlédneš i skupinu Barel gardy, která se pokouší zabránit kriminalitě, ale jak se o ulici vedle přesvědčíš, tak se jim to moc nedaří, jelikož v jedné temné uličce si koutkem oka zaregistroval zloděje, ovšem není to tvůj business, takže akorát pokrčíš rameny a jdeš dále. Dostupné pŕíkazy - medik, obchod, leave");
+                    String cityCom = input.nextLine();
+                    System.out.println("");
+
+                    if(cityCom.equals("leave")){
+                        heroPos[0] += 1;
+                    }
+
+
+                    //obchodník (nákup useless barelů)
+                    else if(cityCom.equals("obchod")){
+                        System.out.println("Vcházíš do zapadlého obchodu v rohu centra. Za pultem uvidíš staříka s dřevěnou rukou a páskou přes oko. Připadal ti trohu jako pirát... akorát naopak. Dostupné příkazy - buy, leave");
+                        String obchod = input.nextLine();
+                        System.out.println("");
+                        
+                        if(obchod.equals("buy")){
+                            System.out.println("Přistoupíš ke staříkovi a zeptáš se, co má na skladě. On ti začne ukazovat různé barely za stejnou cenu. Cena je 30 goldů jeden. Dostupné pŕíkazy - agilita, maxŽivoty, poškození, obrana");
+                            System.out.println("");
+                            String barelChoose = input.nextLine();
+
+                            if(gold >= 30){
+                                //boost agility
+                                if(barelChoose.equals("agilita")){
+                                    heroAgility++;
+                                    gold -= 30;
+                                    System.out.println("Vybral jsi si barel agility. Zaplatíš a vstřebáš ho. Dostáváš 1 agilitu. Máš " + heroAgility + " agility");
+                                    System.out.println("Máš " + gold + " goldů");
+                                }
+
+                                //boost životů
+                                else if(barelChoose.equals("maxŽivoty")){
+                                    heroMaxHealth++;
+                                    gold -= 30;
+                                    System.out.println("Vybral jsi si barel boostu životů. Zaplatíš a vstřebáš ho. Dostáváš 1 maximální život. Máš " + heroMaxHealth + " maximálné životů");
+                                    System.out.println("Máš " + gold  + " goldů");
+                                } 
+                                
+                                //boost damage
+                                else if(barelChoose.equals("poškození")){
+                                    heroDamage++;
+                                    gold -= 30;
+                                    System.out.println("Vybral jsi si barel poškození. Zaplatíš a vstřebáš ho. Dostáváš 1 poškození. Máš " + heroDamage + " poškození");
+                                    System.out.println("Máš " + gold  + " goldů");
+                                }
+                                
+                                //boost defu
+                                else if(barelChoose.equals("obrana")){
+                                    heroMaxHealth++;
+                                    gold -= 30;
+                                    System.out.println("Vybral jsi si barel obrany. Zaplatíš a vstřebáš ho. Dostáváš 1 obranu. Máš " + heroDamage + " obrany");
+                                    System.out.println("Máš " + gold  + " goldů");
+                                }
+
+                            }   
+                            
+                            else{
+                                retard += rand.nextInt(3) + 1;
+                            System.out.println("Jelikož si ze sebe nebyl schopen vykoktat jediné slovo, jak si byl zaskočen jeho vzhledem, i když si viděl odost horší stvoŕení než on. Obchodník se rozřuzil, že je to tento týden už po " + retard + ". kdo nebyl schopen si u něj něco koupit a vyhnal tě na ulici");
+                            }
+
+                            System.out.println("Poděkuješ za jeho čas a odcházíš zpátky do ulice");
+                            System.out.println("");
+                        }
+
+                        //normální odchod
+                        else if(obchod.equals("leave")){
+                            System.out.println("Zapoměl jsi, co si chtěl a odcházíš zpátky do ulice");
+                            System.out.println("");
+                        }
+
+                        //retard
+                        else{
+                            retard += rand.nextInt(3) + 1;
+                            System.out.println("Jelikož si ze sebe nebyl schopen vykoktat jediné slovo, jak si byl zaskočen jeho vzhledem, i když si viděl odost horší stvoŕení než on. Obchodník se rozřuzil, že je to tento týden už po " + retard + ". kdo nebyl schopen si u něj něco koupit a vyhnal tě na ulici");
+                        }
+
+                    }
+
+                    //healer
+                    else if(cityCom.equals("medik")){
+                        System.out.println("Vcházíš k doktorovi. Hned co otevřeš dveře tvou pozornost upoutá lekářka, žena přesně podle tvých představ. Ta svým nádherným hlasem pronese: Léčení stojí 10 goldů. Dostupné příkazy - heal, leave");
+                        String healer = input.nextLine();
+
+                        // healing
+                        if(healer.equals("heal")){
+
+                            if(gold <= 10){
+                                System.out.println("Nemáš dostatek goldů");
+                            }
+
+                            else{
+                                for(int hapka = heroAktHealth; hapka < heroMaxHealth; hapka++){
+                                    heroAktHealth++;
+                                }
+                                gold -= 10;
+                                System.out.println("Jsi zcela uzdraven. Máš " + heroAktHealth + " životů");
+                                System.out.println("Máš " + gold + " goldů");
+                            }
+                            System.out.println("");
+                        }
+
+                        //normální odchod
+                        else if(healer.equals("leave")){
+                            System.out.println("Prostě se otočíš a odejdeš");
+                            System.out.println("");
+                        }
+
+                        //retard
+                        else{
+                            System.out.println("Lékařka se urazila a řekla. Poslyš hochu, jestli nechceš vyléčit a chceš se jenom dívat, tak se stav po desáté v hospodě. Těď můžeš vypadnout");
+                            System.out.println("");
+                        }
+
+                    }
+                }
+
+
+
+
+                else{
+                    System.out.println("Tvá pozice je X " + heroPos[0] + " a pozice Y je " + heroPos[1] + " Dostupné příkazy - mapa, doleva, doprava, dopredu, dozadu");
+                    
+                    Scanner zalud = new Scanner(System.in);
+                    String move = zalud.nextLine();
+
+                    //sebevražda
+                    if (move.equals("kill")) {
+                        System.out.print("Zabil si se....gratuluji");
+                        gameOver = true;
+                    }
+
+                    //možnost boje + boj
+                    if (move.equals("dopredu") || move.equals("doprava") || move.equals("dozadu") || move.equals("doleva")) {
+                        int boj = 0;
+                        boj = rand.nextInt(10);
+                        if (boj < 5) {
+
+                            //enemák generátor
+                            String[] race = {"kostlivci", "pavoukovi", "trollovi", "goblinovi"};
+                     
+                            //je boj ??
+                            boolean flee = true;
+                    
+                            //žije enemák ??
+                            boolean enemyAlive = true;
+                    
+                    
+                            //enemy gen
+                            int enemyGen = rand.nextInt(3);
+                            int[] enemy = {dmg[enemyGen], def[enemyGen], hp[enemyGen], agi[enemyGen]};
+                    
+                            System.out.println("Bojuješ proti " + race[enemyGen]);
+                            System.out.println("Jeho staty jsou dmg - " + enemy[0] + " def - " + enemy[1] + " hp - " + enemy[2] + " agi - " + enemy[3]);
+                            System.out.println("Co chceš dělat ? Dostupné příkazy - boj, utek");
+                            String fajt = input.nextLine();
+                    
+                    
+                            //útěk
+                            if (fajt.equals("utek")) {
+                                int esc = rand.nextInt(9) + 1;
+                                if (esc <= 7) {
+                                    System.out.println("Zakopl si a nepodařilo se ti utéct ");
+                                    flee = false;
+                                } else if (esc > 7) {
+                                    System.out.println("Možná si tímto útěkem nezachováš čest, ale alespoň život ano");
+                                }
+                            }
+                    
+                            //boj
+                            if (fajt.equals("boj") || flee == false) {
+                    
+                    
+                                while (gameOver == false && enemyAlive == true) {
+                                    System.out.println("Na jakou část těla utočíš ? - hlava, telo, nohy");
+                                    String kombatPos = input.nextLine();
+                    
+                                    //útok hlava
+                                    if (kombatPos.equals("hlava")) {
+                                        int dodge = rand.nextInt(enemy[3] * 2) + 1;
+                                        if (heroAgility > dodge) {
+                                            int aktDmg = heroDamage - enemy[1];
+                                            enemy[2] = enemy[2] - aktDmg;
+                                            enemy[1]--;
+                                            System.out.println("Dáváš poškození za " + aktDmg);
+                                            System.out.println("Oponent má " + enemy[2] + " hp a snížil se mu def na " + enemy[1]);
+                                        } else {
+                                            System.out.println("Minul jsi");
+                                        }
+                                    }
+                    
+                                    //útok tělo
+                                    else if (kombatPos.equals("telo")) {
+                                        int dodge = rand.nextInt(enemy[3]) + 1;
+                                        if (heroAgility > dodge) {
+                                            int aktDmg = heroDamage - enemy[1];
+                                            enemy[2] = enemy[2] - aktDmg;
+                                            System.out.println("Dáváš poškození za " + aktDmg);
+                                            System.out.println("Oponent má " + enemy[2] + " hp");
+                                        } else {
+                                            System.out.println("Minul jsi");
+                                        }
+                                    }
+                    
+                                    //útok nohy
+                                    else if (kombatPos.equals("nohy")) {
+                                        if (enemy[3] <= 0) {
+                    
+                                        }
+                                        int dodge = rand.nextInt(enemy[3]) + 1;
+                                        if (heroAgility > dodge) {
+                                            if (enemy[3] <= 0) {
+                                                int aktDmg = heroDamage - enemy[1];
+                                                enemy[2] = enemy[2] - aktDmg;
+                                                System.out.println("Oponent má " + enemy[2] + " hp");
+                                            } else {
+                                                int aktDmg = heroDamage - enemy[1];
+                                                enemy[2] = enemy[2] - aktDmg;
+                                                enemy[3]--;
+                                                System.out.println("Dáváš poškození za " + aktDmg);
+                                                System.out.println("Oponent má " + enemy[2] + " hp a snížila se mu agilita na " + enemy[3]);
+                                            }
+                                        } else {
+                                            System.out.println("Minul jsi");
+                                        }
+                                    }
+                    
+                                    // enemáka smrt
+                                    if (enemy[2] <= 0) {
+                                        enemyAlive = false;
+                                        System.out.println("Zabíšjíš oponenta");
+                                        int ingold = rand.nextInt(9) + 1;
+                                        gold = gold + ingold;
+                                        System.out.println("Získal jsi " + ingold + " Máš " + gold);
+                                        System.out.print("");
+
+                                        int scailing = rand.nextInt(3) + 1;
+
+                                        if(scailing == 1){
+                                            dmg[enemyGen] = dmg[enemyGen] + 1;
+                                        }
+                                        
+                                        else if(scailing == 2){
+                                            def[enemyGen] = def[enemyGen] + 1;
+                                        }
+
+                                        else if(scailing == 3){
+                                            hp[enemyGen] = hp[enemyGen] + 1;
+                                        }
+
+                                        else if(scailing == 4){
+                                            agi[enemyGen] = agi[enemyGen] + 1;
+                                        }
+
+                                        
+                                    }
+                                    
+                    
+                                    //enemák útočí
+                                    //generátor útoku
+                                    int enemyAtack = rand.nextInt(2) + 1;
+                    
+                                    //enemy útok na hlavu
+                                    if (enemyAtack == 3) {
+                                        int dodge = rand.nextInt(heroAgility * 2) + 1;
+                                        if (enemy[3] > dodge) {
+                                            int aktDmg = enemy[0] - heroDef;
+                                            heroAktHealth = heroAktHealth - aktDmg;
+                                            heroDef--;
+                                            System.out.println("Oponent ti útočí na hlavu a dostáváš poškození poškození za " + aktDmg);
+                                            System.out.println("Máš " + heroAktHealth + " hp a byla ti snížena def na " + heroDef);
+                                        } else {
+                                            System.out.println("Oponent minul");
+                                        }
+                    
+                                    }
+                    
+                                    //enemy útok na tělo
+                                    else if (enemyAtack == 2) {
+                                        int dodge = rand.nextInt(heroAgility) + 1;
+                                        if (enemy[3] > dodge) {
+                                            int aktDmg = enemy[0] - heroDef;
+                                            heroAktHealth = heroAktHealth - aktDmg;
+                                            System.out.println("Oponent ti útočí na hlavu a dostáváš poškození poškození za " + aktDmg);
+                                            System.out.println("Máš " + heroAktHealth + " hp");
+                                        } else {
+                                            System.out.println("Oponent tě minul");
+                                        }
+                                    }
+                    
+                                    //enemy útok na nohy
+                                    else if (enemyAtack == 1) {
+                                        int dodge = rand.nextInt(heroAgility) + 1;
+                                        if (enemy[3] > dodge) {
+                                            int aktDmg = enemy[0] - heroDef;
+                                            heroAktHealth = heroAktHealth - aktDmg;
+                                            heroAgility--;
+                                            System.out.println("Oponent ti útočí na hlavu a dostáváš poškození poškození za " + aktDmg);
+                                            System.out.println("Máš " + heroAktHealth + " hp a snižuje ti agi na " + heroAgility);
+                                        } else {
+                                            System.out.println("Oponent tě minul");
+                                        }
+                    
+                                    }
+                    
+                                    //zabití hráče
+                                    if (heroAktHealth <= 0) {
+                                        gameOver = true;
                                         System.out.println("Byl jsi zabit");
                                         break;
                                     }
@@ -382,5 +578,7 @@ public class Hra {
                 }
             }
         }
+        System.out.println("Umíráš po nezdařeném boji v kaluži krve");
+        System.out.print("Konec hry");
     }
 }
