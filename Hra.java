@@ -12,18 +12,18 @@ public class Hra {
         int retard = 1;
 
         //hrdina staty
-        int heroAktHealth = 1;
-        int heroMaxHealth = 1;
-        int heroDamage = 1;
-        int heroDef = 1;
-        int heroAgility = 1;
+        int heroAktHealth = 20;
+        int heroMaxHealth = 20;
+        int heroDamage = 3;
+        int heroDef = 5;
+        int heroAgility = 5;
         int gold = 0;
 
         //enemáci staty
         int[] dmg = {2, 3, 4, 6};
         int[] def = {0, 1, 2, 4};
         int[] hp = {15, 10, 51, 20};
-        int[] agi = {6, 7, 4, 5};
+        int[] agi = {6, 7, 3, 5};
 
 
         //hrdina pozice  X  Y
@@ -237,6 +237,7 @@ public class Hra {
                     gameOver = true;
                 }                
 
+                //město
                 if(heroPos[0] == mesto[0][0] && heroPos[1] == mesto[0][1]){
                     System.out.println("Vcházíš do města Mighty City. Vidíš po ulicíh procházet se stovky lidí. Zahlédneš i skupinu Barel gardy, která se pokouší zabránit kriminalitě, ale jak se o ulici vedle přesvědčíš, tak se jim to moc nedaří, jelikož v jedné temné uličce si koutkem oka zaregistroval zloděje, ovšem není to tvůj business, takže akorát pokrčíš rameny a jdeš dále. Dostupné pŕíkazy - medik, obchod, leave");
                     String cityCom = input.nextLine();
@@ -549,6 +550,12 @@ public class Hra {
                                         break;
                                     }
                                 }
+                            }
+                        
+                            else{
+                                System.out.println("Nereaguješ dostatečně rychle a příšera té zabíjí");
+                                gameOver = true;
+                                break;
                             }
                         }
                     }
