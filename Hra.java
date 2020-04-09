@@ -16,11 +16,13 @@ public class Hra {
         int heroMaxHealth = 20;
         int heroDamage = 3;
         int heroDef = 5;
+        int heroMaxDef = 5;
         int heroAgility = 5;
+        int heroMaxAgility = 5;
         int gold = 0;
 
         //enemáci staty
-        int[] dmg = {2, 3, 4, 6};
+        int[] dmg = {7, 8, 6, 11};
         int[] def = {0, 1, 2, 4};
         int[] hp = {15, 10, 51, 20};
         int[] agi = {6, 7, 3, 5};
@@ -96,7 +98,7 @@ public class Hra {
                                     //útok nohy
                                     else if (kombatPos.equals("nohy")) {
                                         if (enemy[3] <= 0) {
-                    
+                                            enemy[3] = 1;
                                         }
                                         int dodge = rand.nextInt(enemy[3]) + 1;
                                         if (heroAgility > dodge) {
@@ -124,6 +126,9 @@ public class Hra {
                                         gold = gold + ingold;
                                         System.out.println("Získal jsi " + ingold + " Máš " + gold);
                                         System.out.print("");
+                                        
+                                        heroAgility = heroMaxAgility;
+                                        heroDef = heroMaxDef; 
 
                                         int scailing = rand.nextInt(3) + 1;
 
@@ -172,7 +177,7 @@ public class Hra {
                                         if (heroAgility > dodge) {
                                             int aktDmg = enemy[0] - heroDef;
                                             heroAktHealth = heroAktHealth - aktDmg;
-                                            System.out.println("Oponent ti útočí na hlavu a dostáváš poškození poškození za " + aktDmg);
+                                            System.out.println("Oponent ti útočí na tělo a dostáváš poškození poškození za " + aktDmg);
                                             System.out.println("Máš " + heroAktHealth + " hp");
                                         } else {
                                             System.out.println("Oponent tě minul");
@@ -181,12 +186,15 @@ public class Hra {
                     
                                     //enemy útok na nohy
                                     else if (enemyAtack == 1) {
+                                        if (heroAgility <= 0) {
+                                            heroAgility = 1;
+                                        }
                                         int dodge = rand.nextInt(heroAgility) + 1;
                                         if (heroAgility > dodge) {
                                             int aktDmg = enemy[0] - heroDef;
                                             heroAktHealth = heroAktHealth - aktDmg;
                                             heroAgility--;
-                                            System.out.println("Oponent ti útočí na hlavu a dostáváš poškození poškození za " + aktDmg);
+                                            System.out.println("Oponent ti útočí na nohy a dostáváš poškození poškození za " + aktDmg);
                                             System.out.println("Máš " + heroAktHealth + " hp a snižuje ti agi na " + heroAgility);
                                         } else {
                                             System.out.println("Oponent tě minul");
@@ -210,7 +218,7 @@ public class Hra {
                         System.out.println("");
                         int specBoost = rand.nextInt(3) + 1;
                         if(specBoost == 1){
-                            heroAgility += 3;
+                            heroMaxAgility += 3;
                             System.out.println("Cítíš, jak se rychlejí pohybuješ. Dostáváš 3 do agility. Máš " + heroAgility + " agilitu");
                         }
                         else if(specBoost == 2){
@@ -218,7 +226,7 @@ public class Hra {
                             System.out.println("Upadneš na podlahu a uděláš do ni díru. Dostáváš 3 body do poškození. Máš " + heroDamage + " poškození");
                         }
                         else if(specBoost == 3){
-                            heroDef += 3;
+                            heroMaxDef += 3;
                             System.out.print("Šáhneš si na kůži a ucítíš, jako by so šahal na kamínky.Dostáváš 3 body do ocharny. Máš " + heroDef + " ochranu");
                         }
                         else if(specBoost == 4 ){
@@ -255,21 +263,21 @@ public class Hra {
                         System.out.println("");
                         
                         if(obchod.equals("buy")){
-                            System.out.println("Přistoupíš ke staříkovi a zeptáš se, co má na skladě. On ti začne ukazovat různé barely za stejnou cenu. Cena je 30 goldů jeden. Dostupné pŕíkazy - agilita, maxŽivoty, poškození, obrana");
+                            System.out.println("Přistoupíš ke staříkovi a zeptáš se, co má na skladě. On ti začne ukazovat různé barely za stejnou cenu. Cena je 30 goldů jeden. Dostupné pŕíkazy - agilita, maxZivoty, poskozeni, obrana");
                             System.out.println("");
                             String barelChoose = input.nextLine();
 
                             if(gold >= 30){
                                 //boost agility
                                 if(barelChoose.equals("agilita")){
-                                    heroAgility++;
+                                    heroMaxAgility++;
                                     gold -= 30;
                                     System.out.println("Vybral jsi si barel agility. Zaplatíš a vstřebáš ho. Dostáváš 1 agilitu. Máš " + heroAgility + " agility");
                                     System.out.println("Máš " + gold + " goldů");
                                 }
 
                                 //boost životů
-                                else if(barelChoose.equals("maxŽivoty")){
+                                else if(barelChoose.equals("maxZivoty")){
                                     heroMaxHealth++;
                                     gold -= 30;
                                     System.out.println("Vybral jsi si barel boostu životů. Zaplatíš a vstřebáš ho. Dostáváš 1 maximální život. Máš " + heroMaxHealth + " maximálné životů");
@@ -277,7 +285,7 @@ public class Hra {
                                 } 
                                 
                                 //boost damage
-                                else if(barelChoose.equals("poškození")){
+                                else if(barelChoose.equals("poskozeni")){
                                     heroDamage++;
                                     gold -= 30;
                                     System.out.println("Vybral jsi si barel poškození. Zaplatíš a vstřebáš ho. Dostáváš 1 poškození. Máš " + heroDamage + " poškození");
@@ -286,7 +294,7 @@ public class Hra {
                                 
                                 //boost defu
                                 else if(barelChoose.equals("obrana")){
-                                    heroMaxHealth++;
+                                    heroMaxDef++;
                                     gold -= 30;
                                     System.out.println("Vybral jsi si barel obrany. Zaplatíš a vstřebáš ho. Dostáváš 1 obranu. Máš " + heroDamage + " obrany");
                                     System.out.println("Máš " + gold  + " goldů");
@@ -376,6 +384,9 @@ public class Hra {
                         boj = rand.nextInt(10);
                         if (boj < 5) {
 
+                            heroAgility = heroMaxAgility;
+                            heroDef = heroMaxDef; 
+
                             //enemák generátor
                             String[] race = {"kostlivci", "pavoukovi", "trollovi", "goblinovi"};
                      
@@ -445,7 +456,7 @@ public class Hra {
                                     //útok nohy
                                     else if (kombatPos.equals("nohy")) {
                                         if (enemy[3] <= 0) {
-                    
+                                            enemy[3] = 1;
                                         }
                                         int dodge = rand.nextInt(enemy[3]) + 1;
                                         if (heroAgility > dodge) {
@@ -473,6 +484,8 @@ public class Hra {
                                         gold = gold + ingold;
                                         System.out.println("Získal jsi " + ingold + " Máš " + gold);
                                         System.out.print("");
+                                        heroAgility = heroMaxAgility;
+                                        heroDef = heroMaxDef; 
 
                                         int scailing = rand.nextInt(3) + 1;
 
@@ -521,7 +534,7 @@ public class Hra {
                                         if (enemy[3] > dodge) {
                                             int aktDmg = enemy[0] - heroDef;
                                             heroAktHealth = heroAktHealth - aktDmg;
-                                            System.out.println("Oponent ti útočí na hlavu a dostáváš poškození poškození za " + aktDmg);
+                                            System.out.println("Oponent ti útočí na tělo a dostáváš poškození poškození za " + aktDmg);
                                             System.out.println("Máš " + heroAktHealth + " hp");
                                         } else {
                                             System.out.println("Oponent tě minul");
@@ -530,12 +543,15 @@ public class Hra {
                     
                                     //enemy útok na nohy
                                     else if (enemyAtack == 1) {
+                                        if (heroAgility <= 0) {
+                                            heroAgility = 1;
+                                        }
                                         int dodge = rand.nextInt(heroAgility) + 1;
                                         if (enemy[3] > dodge) {
                                             int aktDmg = enemy[0] - heroDef;
                                             heroAktHealth = heroAktHealth - aktDmg;
                                             heroAgility--;
-                                            System.out.println("Oponent ti útočí na hlavu a dostáváš poškození poškození za " + aktDmg);
+                                            System.out.println("Oponent ti útočí na nohy a dostáváš poškození poškození za " + aktDmg);
                                             System.out.println("Máš " + heroAktHealth + " hp a snižuje ti agi na " + heroAgility);
                                         } else {
                                             System.out.println("Oponent tě minul");
@@ -551,6 +567,7 @@ public class Hra {
                                     }
                                 }
                             }
+
                         
                             else{
                                 System.out.println("Nereaguješ dostatečně rychle a příšera té zabíjí");
@@ -568,18 +585,18 @@ public class Hra {
                     } else if (move.equals("dozadu")) {
                         heroPos[1] = heroPos[1] - 1;
                     } else if (move.equals("doleva")) {
-                        heroPos[1] = heroPos[0] - 1;
+                        heroPos[0] = heroPos[0] - 1;
                     }
 
                     //prostě se podíváš kolem LOL
                     else if (move.equals("mapa")) {
 
                         //mapa
-                        System.out.println("Mighty barel je od tebe vzdálený: " + (mesto[0][0] - heroPos[0]) + " po pozici X a " + (mesto[0][1] - heroPos[1]));
+                        System.out.println("Mighty barel je od tebe vzdálený: " + (mesto[0][0] - heroPos[0]) + " po ose X a " + (mesto[0][1] - heroPos[1]) + " po ose Y");
                         System.out.println("Dunegony jsou od tebe vzdálené: ");
                         for(int x = 0; x < dung.length; x++){
-                            System.out.print((dung[x][0] - heroPos[0]) + " po pozici X a ");
-                            System.out.println((dung[x][1] - heroPos[1]) + " po pozici Y ");
+                            System.out.print((dung[x][0] - heroPos[0]) + " po ose X a ");
+                            System.out.println((dung[x][1] - heroPos[1]) + " po ose Y ");
                         }
                     }
                 }
