@@ -11,6 +11,8 @@ public class Hra {
 
         int retard = 1;
 
+        int lore = 1;   
+
         //hrdina staty
         int heroAktHealth = 20;
         int heroMaxHealth = 20;
@@ -214,7 +216,40 @@ public class Hra {
                         }
                         System.out.println("");
                         System.out.println("Vcházíš po schodech do posledního patra, kde zářivý barel. Následně ho ihned po dodupnutí na podloahu vstřebáš a začínáš vidět svou minulost");
-                        System.out.println("TODO## lore");
+                        System.out.println("");
+
+                        //todo##
+                        if(lore == 0){
+                            System.out.println("Mám tě! Zabíjení pavouků je pro mě taková nostalgie. Jednalo se o úplně první zrůdu, kterou jsem kdy zabil. Taky jsem z toho ve městě za naší vesnicí dost vydělal. Více než táta za týden v lese s dřevorubci. Tehdy jsem mě poprvé napadlo, že bych díky tomu mohl dostat naši rodinu z dluhů, které jsme měli. Vzhledem k tomu, že se těch monster báli i lovčí, povedlo se mi na tom vydělat dost peněz. Otce to ale od alkoholu nezachránilo. Tak jsem zůstal jen já a několik desítek sudů piv, které jsem musel splatit.");
+                        }
+                        else if(lore == 1){
+                            System.out.println("Mám tě! Zabíjení pavouků je pro mě taková nostalgie. Jednalo se o úplně první zrůdu, kterou jsem kdy zabil. Taky jsem z toho ve městě za naší vesnicí dost vydělal. Více než táta za týden v lese s dřevorubci. Tehdy jsem mě poprvé napadlo, že bych díky tomu mohl dostat naši rodinu z dluhů, které jsme měli. Vzhledem k tomu, že se těch monster báli i lovčí, povedlo se mi na tom vydělat dost peněz. Otce to ale od alkoholu nezachránilo. Tak jsem zůstal jen já a několik desítek sudů piv, které jsem musel splatit.");
+                            System.out.println("");
+                            System.out.println("Zvuk klepajících se kostí mi dodnes budí hrůzu. Nemůžu zapomenout na to, jak jsme odvedli mého nemocného bratra k té proklaté čarodějnici. Že prý ho dokáže zachránit, když pořádně zaplatíme. Otec jí dal všechny naše peníze. Je mi zle jen na to pomyslím. Všude byly pověšeny kostry lidí, ona ho položila na stůl a ještě při vědomí mu rozřízla ruku až ke kosti a začala tu kost rvát z jeho těla. Já jsem začal brečet a otec se to pokusil zastavit, ale všechny ty kostry se začaly hýbat. Jako by ožily. Ti kostlivci nepustili otce ke stolu a můj bratr Rafard mezitím začal hrozně křičet. Museli jsme se jen dívat. Můj bratr to nepřežil.");
+                            System.out.print("Ten večer jsme to řekli ve vesnici, sebrali vidle a pochodně a vyrazili tu babiznu upálit. Chatrč i se všemi kostlivci na mýtině už ale nebyla. Když jsem unavený a skoro mrtvý, o pár let později, po souboji s Trollem na chatrč náhodou narazil, stará čarodějka mi nabídla pomoc. Vysvětlila mi taky, že ona tehdy ty kostlivce neovládala, že to bylo prokletí těch lidí, kteří se jimi stali. Ona se ty lidi opravdu snažila zachránit. Víc jsem z ní nedostal. Byla už stará a nesmyslně blábolila a opakovala pořád stejná slova. Nevím, proč jsem jí tehdy věřil. Snad proto, že mi ošetřila ránu a nechala najíst. Snad proto, že už jsem tehdy dostal pár odměn za zabití kostlivců a nikdy nebyla poblíž žádná čarodějnice.");
+                            System.out.println("");
+                        }
+                        else if(lore == 2){
+                            System.out.println("Mám tě! Zabíjení pavouků je pro mě taková nostalgie. Jednalo se o úplně první zrůdu, kterou jsem kdy zabil. Taky jsem z toho ve městě za naší vesnicí dost vydělal. Více než táta za týden v lese s dřevorubci. Tehdy jsem mě poprvé napadlo, že bych díky tomu mohl dostat naši rodinu z dluhů, které jsme měli. Vzhledem k tomu, že se těch monster báli i lovčí, povedlo se mi na tom vydělat dost peněz. Otce to ale od alkoholu nezachránilo. Tak jsem zůstal jen já a několik desítek sudů piv, které jsem musel splatit.");
+                            System.out.println("");
+                            System.out.println("Zvuk klepajících se kostí mi dodnes budí hrůzu. Nemůžu zapomenout na to, jak jsme odvedli mého nemocného bratra k té proklaté čarodějnici. Že prý ho dokáže zachránit, když pořádně zaplatíme. Otec jí dal všechny naše peníze. Je mi zle jen na to pomyslím. Všude byly pověšeny kostry lidí, ona ho položila na stůl a ještě při vědomí mu rozřízla ruku až ke kosti a začala tu kost rvát z jeho těla. Já jsem začal brečet a otec se to pokusil zastavit, ale všechny ty kostry se začaly hýbat. Jako by ožily. Ti kostlivci nepustili otce ke stolu a můj bratr Rafard mezitím začal hrozně křičet. Museli jsme se jen dívat. Můj bratr to nepřežil.");
+                            System.out.print("Ten večer jsme to řekli ve vesnici, sebrali vidle a pochodně a vyrazili tu babiznu upálit. Chatrč i se všemi kostlivci na mýtině už ale nebyla. Když jsem unavený a skoro mrtvý, o pár let později, po souboji s Trollem na chatrč náhodou narazil, stará čarodějka mi nabídla pomoc. Vysvětlila mi taky, že ona tehdy ty kostlivce neovládala, že to bylo prokletí těch lidí, kteří se jimi stali. Ona se ty lidi opravdu snažila zachránit. Víc jsem z ní nedostal. Byla už stará a nesmyslně blábolila a opakovala pořád stejná slova. Nevím, proč jsem jí tehdy věřil. Snad proto, že mi ošetřila ránu a nechala najíst. Snad proto, že už jsem tehdy dostal pár odměn za zabití kostlivců a nikdy nebyla poblíž žádná čarodějnice.");
+                            System.out.println("");
+                            System.out.println("Troll. Pamatuji si na den, kdy jsem ulovil prvního. Tehdy to byl můj největší úlovek. Taky mě to málem stálo život. Té jeskyně u Žlutých skal se všichni báli. Popravdě já se bál taky. Ale ty peníze, které mi nabízeli, to se nedalo odmítnout. Mám kvůli nim sice obrovskou jizvu na břiše ale ten Troll dopadl hůř. Můj život ale zachránila ta čarodějka, kterou jsem náhodou potkal.");
+                            System.out.print("Díky těm penězům a té čarodějce jsem se ostatně dostal sem.");
+                            System.out.println("");
+                        }
+                        else if(lore <= 3){
+                            System.out.println("Mám tě! Zabíjení pavouků je pro mě taková nostalgie. Jednalo se o úplně první zrůdu, kterou jsem kdy zabil. Taky jsem z toho ve městě za naší vesnicí dost vydělal. Více než táta za týden v lese s dřevorubci. Tehdy jsem mě poprvé napadlo, že bych díky tomu mohl dostat naši rodinu z dluhů, které jsme měli. Vzhledem k tomu, že se těch monster báli i lovčí, povedlo se mi na tom vydělat dost peněz. Otce to ale od alkoholu nezachránilo. Tak jsem zůstal jen já a několik desítek sudů piv, které jsem musel splatit.");
+                            System.out.println("");
+                            System.out.println("Zvuk klepajících se kostí mi dodnes budí hrůzu. Nemůžu zapomenout na to, jak jsme odvedli mého nemocného bratra k té proklaté čarodějnici. Že prý ho dokáže zachránit, když pořádně zaplatíme. Otec jí dal všechny naše peníze. Je mi zle jen na to pomyslím. Všude byly pověšeny kostry lidí, ona ho položila na stůl a ještě při vědomí mu rozřízla ruku až ke kosti a začala tu kost rvát z jeho těla. Já jsem začal brečet a otec se to pokusil zastavit, ale všechny ty kostry se začaly hýbat. Jako by ožily. Ti kostlivci nepustili otce ke stolu a můj bratr Rafard mezitím začal hrozně křičet. Museli jsme se jen dívat. Můj bratr to nepřežil.");
+                            System.out.print("Ten večer jsme to řekli ve vesnici, sebrali vidle a pochodně a vyrazili tu babiznu upálit. Chatrč i se všemi kostlivci na mýtině už ale nebyla. Když jsem unavený a skoro mrtvý, o pár let později, po souboji s Trollem na chatrč náhodou narazil, stará čarodějka mi nabídla pomoc. Vysvětlila mi taky, že ona tehdy ty kostlivce neovládala, že to bylo prokletí těch lidí, kteří se jimi stali. Ona se ty lidi opravdu snažila zachránit. Víc jsem z ní nedostal. Byla už stará a nesmyslně blábolila a opakovala pořád stejná slova. Nevím, proč jsem jí tehdy věřil. Snad proto, že mi ošetřila ránu a nechala najíst. Snad proto, že už jsem tehdy dostal pár odměn za zabití kostlivců a nikdy nebyla poblíž žádná čarodějnice.");
+                            System.out.println("");
+                            System.out.println("Troll. Pamatuji si na den, kdy jsem ulovil prvního. Tehdy to byl můj největší úlovek. Taky mě to málem stálo život. Té jeskyně u Žlutých skal se všichni báli. Popravdě já se bál taky. Ale ty peníze, které mi nabízeli, to se nedalo odmítnout. Mám kvůli nim sice obrovskou jizvu na břiše ale ten Troll dopadl hůř. Můj život ale zachránila ta čarodějka, kterou jsem náhodou potkal.");
+                            System.out.print("Díky těm penězům a té čarodějce jsem se ostatně dostal sem.");
+                            System.out.println("");
+                            System.out.println("Můj první goblin. Než jsem si zvykl na ty pohyby chvíli to trvalo. Ale nakonec se ukázalo, že to jsou stejně blbá monstra, jako u nás doma. Jak se lidi můžou bát něčeho co má mozek o velikosti hrášku. Navíc je musí cítit na míle daleko. Je mi z nich zle. Z toho puchu se mi motá hlava. Takhle smradlavé a slizké monstra jsme u nás doma neměli. Za ty peníze to ale stojí. Víc takových a budu si moci dovolit koupit dům tady v MightyBarelu.");
+                        }
                         System.out.println("");
                         int specBoost = rand.nextInt(3) + 1;
                         if(specBoost == 1){
@@ -235,8 +270,12 @@ public class Hra {
                                 
                             }
                             System.out.println("Ucítíš, jak ti teplá krev a vidíš, jak mění barvu. Dostáváš 3 body do maximálních životů a byl jsi vyléčen. Máš " + heroMaxHealth + "bodů maximalních životů");
+                            lore++;
+                            System.out.println("");
+                            System.out.println("Vycházíš zpátky na povrch a uslyšíš, jak se za tebou celé sklepení propadlo do země.");
+                            dung[x][0] = -2000;
+                            dung[x][1] = -2000;
                         }
-
                     }
                 }
                 
@@ -382,7 +421,7 @@ public class Hra {
                     if (move.equals("dopredu") || move.equals("doprava") || move.equals("dozadu") || move.equals("doleva")) {
                         int boj = 0;
                         boj = rand.nextInt(10);
-                        if (boj < 5) {
+                        if (boj < 4) {
 
                             heroAgility = heroMaxAgility;
                             heroDef = heroMaxDef; 
